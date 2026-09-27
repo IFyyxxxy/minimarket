@@ -29,4 +29,17 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    // POIN 6: Query Scopes (Local Scope)
+    // Berfungsi untuk membuat template query yang bisa dipakai berulang kali
+    public function scopeTerbaru($query)
+    {
+        return $query->orderBy('created_at', 'desc');
+    }
+
+    // POIN 3: Accessors (Mengubah format data saat ditampilkan)
+    // Berfungsi menggabungkan nama dan email untuk tampilan
+    public function getProfilLengkapAttribute()
+    {
+        return $this->name . ' (' . $this->email . ')';
+    }
 }

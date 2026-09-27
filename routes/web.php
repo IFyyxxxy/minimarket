@@ -76,3 +76,12 @@ Route::get('/acara18', function () {
     // Mengirim data ke file tampil_acara18.blade.php
     return view('tampil_acara18', compact('semuaUser', 'userDiambil'));
 });
+
+Route::get('/acara19', function () {
+    $userActive = User::where('name', 'LIKE', '%John%')->get();
+    $userOr = User::where('id', 1)->orWhere('email', 'LIKE', '%example.com%')->get();
+    $userIn = User::whereIn('id', [1, 2, 3])->get();
+    $userNotNull = User::whereNotNull('email')->get();
+
+    return view('tampil_acara19', compact('userActive', 'userOr', 'userIn', 'userNotNull'));
+});
